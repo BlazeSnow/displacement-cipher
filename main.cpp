@@ -13,15 +13,15 @@ vector<char> p;
 
 // 编码密码
 void bianma() {
-  for (int i = 0; i < p.size(); i++) {
-    cout << (char)((int)p[i] + PASSWORD);
+  for (auto i : p) {
+    cout << (char)((int)i + PASSWORD);
   }
 }
 
 // 解码密码
 void jiema() {
-  for (int i = 0; i < p.size(); i++) {
-    cout << (char)((int)p[i] - PASSWORD);
+  for (auto i : p) {
+    cout << (char)((int)i - PASSWORD);
   }
 }
 
