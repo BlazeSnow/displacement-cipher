@@ -1,23 +1,29 @@
 ﻿#include <cstdlib>
 #include <iostream>
+#include <vector>
 
 using namespace std;
+
+// 定义密码偏移量
 #define PASSWORD 5
 
-void bianma(char *p, int number) {
-  for (int i = 0; i <= number - 1; i++, p++) {
-    *p = (char)((int)*p + PASSWORD);
-    cout << *p;
+// 定义数组
+vector<char> p;
+
+// 编码密码
+void bianma() {
+  for (int i = 0; i <= p.size(); i++) {
+    p[i] = (char)((int)p[i] + PASSWORD);
+    cout << p[i];
   }
-  cout << endl;
 }
 
-void jiema(char *p, int number) {
-  for (int i = 0; i <= number - 1; i++, p++) {
-    *p = (char)((int)*p - PASSWORD * 2);
-    cout << *p;
+// 解码密码
+void jiema() {
+  for (int i = 0; i <= p.size(); i++) {
+    p[i] = (char)((int)p[i] - PASSWORD * 2);
+    cout << p[i];
   }
-  cout << endl;
 }
 
 int main() {
@@ -26,35 +32,28 @@ int main() {
   cout << "Copyright (C) 2024-2025 BlazeSnow. 保留所有权利。" << endl;
   cout << "当前程序版本号：v1.0.2" << endl;
   cout << "https://github.com/BlazeSnow/displacement-cipher" << endl << endl;
-  int number = 1000;
-  char *p = (char *)malloc(sizeof(char) * number);
-  // 检查p的NULL
-  if (!p) {
-    cout << "ERROR:malloc" << endl;
-    system("pause");
-    return -1;
-  }
   // 输入
   cout << "移位密码移位距离：" << PASSWORD << endl;
   cout << "请输入内容：" << endl;
-  for (int i = 0; i <= number; i++) {
-    *(p + i) = (char)cin.get();
-    if (*(p + i) == '\n') {
-      number = i;
+  while (true) {
+    char temp = (char)cin.get();
+    if (temp == '\n') {
       break;
     }
+    p.push_back(temp);
   }
   // 输出PASSWORD的值
   cout << endl;
   cout << "移位密码移位距离：" << PASSWORD << endl;
   // 编码
   cout << "编码的结果为:" << endl;
-  bianma(p, number);
+  bianma();
+  cout << endl;
   // 解码
   cout << "解码的结果为:" << endl;
-  jiema(p, number);
-  // 释放p
-  free(p);
+  jiema();
+  cout << endl;
+  // 结束前暂停
   system("pause");
   return 0;
 }
