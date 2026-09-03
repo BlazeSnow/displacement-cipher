@@ -52,7 +52,7 @@ int main() {
 #endif
 
     clearConsole();
-    printf("Copyright (C) 2024-2026 BlazeSnow. 保留所有权利。\n");
+    printf("Copyright (C) 2024-2026 BlazeSnow.\n");
     printf("https://github.com/BlazeSnow/displacement-cipher\n\n");
     // 输入
     printf("移位密码移位距离：%d\n", PASSWORD);
